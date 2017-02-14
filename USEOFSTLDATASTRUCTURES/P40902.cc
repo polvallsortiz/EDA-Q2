@@ -21,21 +21,16 @@ int main() {
     string name,action;
     while(cin >> name >> action) {
         if(action == "enters") {
-            cerr << "ENTRO ENTERS" << endl;
             if(inside(name,casino)) cout << name << " is already in the casino" << endl;
             else casino[name] = 0;
         }
         else if(action == "wins") {
-            cerr << "ENTRO WINS" << endl;
+            int entrada;
+            cin >> entrada;
             if(not inside(name,casino)) cout << name << " is not in the casino" << endl;
-            else {
-                int entrada;
-                cin >> entrada;
-                casino[name] += entrada;
-            }
+            else casino[name] += entrada;
         }
         else if(action == "leaves") {
-            cerr << "ENTRO LEAVES" << endl;
             if(not inside(name,casino)) cout << name << " is not in the casino" << endl;
             else {
                 cout << name << " has won " << casino[name] << endl;
