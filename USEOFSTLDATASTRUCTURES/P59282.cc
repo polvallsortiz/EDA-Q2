@@ -4,7 +4,7 @@ using namespace std;
 
 void end_action(const map<int,int>& map1, int average, int n) {
     if(not map1.empty()) {
-        float av = average;
+        double av = average;
         map<int,int>::const_iterator it = map1.begin();
         cout << "minimum: " << it->first << ", maximum: ";
         it = map1.end();
