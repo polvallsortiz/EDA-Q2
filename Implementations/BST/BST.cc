@@ -71,8 +71,6 @@ void BST::delete_elem(int elem) {
 		root = nullptr;
 		delete n;
 		size = 0;
-		size = 0;
-		--size;
 	}
 }
 
