@@ -8,17 +8,15 @@
 using namespace std;
 
 node* BST::search_position_ant(node* actual, int elem) {
-    node* aux;
-    aux = actual;
-    if(aux->x < elem) { // A LA DRETA
-        if(aux->right == nullptr) return aux;
-        else return search_position_ant(aux->right,elem);
+    if(actual->x < elem) { // A LA DRETA
+        if(actual->right == nullptr or actual->right->x == elem) return actual;
+        else return search_position_ant(actual->right,elem);
     }
-    else if(aux->x > elem) { //A L'ESQUERRA
-        if(aux->left == nullptr) return aux;
-        else return search_position_ant(aux->left,elem);
+    else if(actual->x > elem) { //A L'ESQUERRA
+        if(actual->left == nullptr or actual->left->x == elem) return actual;
+        else return search_position_ant(actual->left,elem);
     }
-    else return aux;
+	else if(actual->x == elem) return actual; //ROOT
 }
 
 BST::BST() {
@@ -57,10 +55,25 @@ void BST::insert_elem(int elem) {
 void BST::delete_elem(int elem) {
     node* n;
     n=search_position_ant(root,elem);
-	if(n->x ==elem) delete n;
-    else if(n->left->x == elem) n = n->left;
-    else if(n->right->x == elem) n = n->right;
-	--size;
+	if(n->left->x == elem) {
+		node* aux = n->left;
+		n->left = nullptr;
+		delete aux;
+		--size;
+	}
+	else if(n->right->x == elem) {
+		node* aux = n->right;
+		n->right = nullptr;
+		delete aux;
+		--size;
+	}
+	else if(n == root) {
+		root = nullptr;
+		delete n;
+		size = 0;
+		size = 0;
+		--size;
+	}
 }
 
 void BST::escriure_fills(node *actual) {
@@ -77,4 +90,5 @@ void BST::escriure_fills(node *actual) {
 
 void BST::escriure () {
 	if(root)escriure_fills(root);
+	else cout << "BST Empty" << endl;
 }

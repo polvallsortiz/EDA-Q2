@@ -10,8 +10,9 @@ int main() {
 	b.insert_elem(6);
 	b.insert_elem(8);
 	b.insert_elem(4);
+	b.delete_elem(4);
 	b.insert_elem(5);
 	b.insert_elem(-1);
-	b.insert_elem(4);
+	b.delete_elem(6);
 	b.escriure();
 }
