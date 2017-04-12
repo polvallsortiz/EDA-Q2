@@ -16,7 +16,7 @@ node* BST::search_position_ant(node* actual, int elem) {
         if(actual->left == nullptr or actual->left->x == elem) return actual;
         else return search_position_ant(actual->left,elem);
     }
-	else if(actual->x == elem) return actual; //ROOT
+	else return actual; //ROOT
 }
 
 BST::BST() {
@@ -25,8 +25,7 @@ BST::BST() {
 }
 
 void BST::insert_elem(int elem) {
-    node* n;
-    n = new node;
+    node* n = new node;
     n->x = elem;
 	n->left = nullptr;
 	n->right = nullptr;
